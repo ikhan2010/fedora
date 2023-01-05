@@ -3,20 +3,19 @@
   hosts: all
   become: yes
   tasks:
-  - name: Install Apache web server
+  - name: install nginx
     dnf:
-      name: httpd
+      name: nginx
       state: present
-
-  - name: Start Apache web server
-    service:
-      name: httpd
-      state: started
-
-  - name: Update home page
+  - name: copy index.html
     copy:
       src: index.html
-      dest: /var/www/html/index.html
-      owner: apache
-      group: apache
+      dest: /usr/share/nginx/html/index.html
+      owner: nginx
+      group: nginx
       mode: 0644
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
+      enabled: yes
