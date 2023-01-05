@@ -1,0 +1,10 @@
+---
+- name: Update Fedora packages
+  hosts: all
+  become: yes
+  tasks:
+  - name: update all packages
+    dnf:
+      update_cache: yes
+      name: "*"
+      state: latest
