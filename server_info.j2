@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Server Information</title>
+    <style>
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .info-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Server Information</h1>
+    <div class="info-container">
+      <div class="info-item">
+        <span>Server Name:</span>
+        <span>{{ ansible_hostname }}</span>
+      </div>
+      <div class="info-item">
+        <span>IP Address:</span>
+        <span>{{ ansible_default_ipv4.address }}</span>
+      </div>
+    </div>
+  </body>
+</html>
