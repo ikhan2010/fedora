@@ -7,9 +7,9 @@
     dnf:
       name: nginx
       state: present
-  - name: copy index.html
+  - name: copy index.html from github
     get_url:
-      src: https://github.com/ikhan2010/fedora/blob/main/index.html
+      url: https://github.com/ikhan2010/fedora/blob/main/index.html
       dest: /usr/share/nginx/html/index.html
       owner: nginx
 #      group: nginx
