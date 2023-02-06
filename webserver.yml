@@ -8,12 +8,12 @@
       name: nginx
       state: present
   - name: copy index.html
-    copy:
+    get_url:
       src: https://github.com/ikhan2010/fedora/blob/main/index.html
       dest: /usr/share/nginx/html/index.html
       owner: nginx
-      group: nginx
-      mode: 0644
+#      group: nginx
+#      mode: 0644
   - name: start nginx
     service:
       name: nginx
