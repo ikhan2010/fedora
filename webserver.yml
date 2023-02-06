@@ -10,10 +10,15 @@
   - name: copy index.html from github
     get_url:
       url: https://raw.githubusercontent.com/ikhan2010/fedora/main/server_info.j2
-      dest: /usr/share/nginx/html/index.html
+#      dest: /usr/share/nginx/html/index.html
+      dest: /tmp/server_info.j2
       owner: nginx
 #      group: nginx
 #      mode: 0644
+  - name: Render and copy HTML template
+    template:
+      src: /tmp/server_info.j2
+      dest: /usr/share/nginx/html/index.html
   - name: start nginx
     service:
       name: nginx
