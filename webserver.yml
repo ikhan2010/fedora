@@ -9,7 +9,7 @@
       state: present
   - name: copy index.html from github
     get_url:
-      url: https://github.com/ikhan2010/fedora/blob/main/index.html
+      url: https://raw.githubusercontent.com/ikhan2010/fedora/main/index.html
       dest: /usr/share/nginx/html/index.html
       owner: nginx
 #      group: nginx
