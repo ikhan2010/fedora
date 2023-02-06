@@ -14,7 +14,7 @@
       dest: /tmp/server_info.j2
       owner: root
 #      group: nginx
-#      mode: 0644
+      mode: 0644
   - name: Render and copy HTML template
     template:
       src: /tmp/server_info.j2
