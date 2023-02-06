@@ -7,18 +7,18 @@
     dnf:
       name: nginx
       state: present
-  - name: copy index.html from github
+  - name: Copy sample index.html from github
     get_url:
       url: https://raw.githubusercontent.com/ikhan2010/fedora/main/server_info.j2
-#      dest: /usr/share/nginx/html/index.html
-      dest: server_info.j2
-#      owner: root
-#      group: nginx
-#      mode: 0755
-  - name: Render and copy HTML template
-    template:
-      src: server_info.j2
       dest: /usr/share/nginx/html/index.html
+#      dest: server_info.j2
+#      owner: root
+      group: nginx
+#      mode: 0755
+#  - name: Render and copy HTML template
+#    template:
+#      src: server_info.j2
+#      dest: /usr/share/nginx/html/index.html
   - name: start nginx
     service:
       name: nginx
