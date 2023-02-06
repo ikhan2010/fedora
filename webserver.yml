@@ -7,13 +7,13 @@
     dnf:
       name: nginx
       state: present
-  - name: copy index.html
-    copy:
-      src: index.html
-      dest: /usr/share/nginx/html/index.html
-      owner: nginx
-      group: nginx
-      mode: 0644
+  #- name: copy index.html
+  #  copy:
+  #    src: index.html
+  #    dest: /usr/share/nginx/html/index.html
+  #    owner: nginx
+  #    group: nginx
+  #    mode: 0644
   - name: start nginx
     service:
       name: nginx
