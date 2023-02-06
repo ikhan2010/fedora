@@ -1,75 +1,37 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Latest Stock Prices</title>
+    <title>Server Information</title>
     <style>
-      table {
-        width: 80%;
-        margin: 0 auto;
-        border-collapse: collapse;
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
       }
 
-      td, th {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-
-      th {
-        background-color: lightgray;
-      }
-
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
+      .info-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 36px;
+        margin-bottom: 20px;
       }
     </style>
   </head>
   <body>
-    <h1 style="text-align: center;">Latest Stock Prices</h1>
-    <table id="stock-prices">
-      <tr>
-        <th>Ticker Symbol</th>
-        <th>Company Name</th>
-        <th>Price</th>
-        <th>Change</th>
-      </tr>
-    </table>
-    <script>
-      // Replace with the desired ticker symbols
-      var tickers = ["VGT","AAPL", "GOOG", "AMZN"];
-      var table = document.getElementById("stock-prices");
-
-      // Fetch the stock prices from Yahoo Finance API
-      tickers.forEach(function(ticker) {
-        fetch(`https://finance.yahoo.com/quote/${ticker}`)
-          .then(function(response) {
-            return response.text();
-          })
-          .then(function(html) {
-            // Extract the relevant information from the HTML page
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, "text/html");
-            var companyName = doc.querySelector("h1").textContent;
-            var price = doc.querySelector("span[data-reactid=51]").textContent;
-            var change = doc.querySelector("span[data-reactid=52]").textContent;
-
-            // Add a new row to the table
-            var row = table.insertRow();
-            var tickerCell = row.insertCell();
-            tickerCell.innerHTML = ticker;
-            var nameCell = row.insertCell();
-            nameCell.innerHTML = companyName;
-            var priceCell = row.insertCell();
-            priceCell.innerHTML = price;
-            var changeCell = row.insertCell();
-            changeCell.innerHTML = change;
-          })
-          .catch(function(error) {
-            console.error("Failed to fetch stock price for " + ticker, error);
-          });
-      });
-    </script>
+    <h1 style="text-align: center;">Server Information</h1>
+    <div class="info-container">
+      <div class="info-item">
+        <span>Server Name:</span>
+        <span>{{ ansible_hostname }}</span>
+      </div>
+      <div class="info-item">
+        <span>IP Address:</span>
+        <span>{{ ansible_default_ipv4.address }}</span>
+      </div>
+    </div>
   </body>
 </html>
-
