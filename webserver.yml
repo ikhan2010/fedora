@@ -24,3 +24,30 @@
       name: nginx
       state: started
       enabled: yes
+  - name: configure new vlan on a Cisco IOS device
+    cisco.ios.ios_vlans:
+      config:
+        - name: HR_VLAN
+          vlan_id: 5
+          state: active
+          shutdown: disabled
+        - name: Sales_VLAN
+          vlan_id: 10
+          mtu: 1000
+          state: active
+          shutdown: disabled
+        - name: PROC_VLAN
+          vlan_id: 30
+          state: suspend
+          shutdown: enabled
+      state: overridden
+    register: cisco_output
+  
+
+
+
+  
+   
+  
+
+  
